@@ -1,5 +1,6 @@
 # Golden rules
 > Every thing is a file 
+
 > Man is your best friend
 # CLI  
 > We can control system by two methods (GUI & CLI ) CLI is most common on servers and most times called (tty) tele type terminal when we have physical access to the machine 
@@ -11,39 +12,42 @@
 > Alt +Fn | chvt n 
 
 Note
->we have more than tty to do more operation at same time 
->to know what tty i am in just type tty 
+>we have more than tty to do more operation at same time & to know what tty i am in just type tty 
 
 # Users
-> We have two general users 
-> 1- Root that have ID = 0 >>>> has all permission 
-> 2- Normal user ID >= 1000 
+ We have two general users  
+ - Root that have ID = 0 >>>> has all permission 
+ - Normal user ID >= 1000 
 > from 0 to 1000 reserverd to system services
 
-( 2 ) to know which user using the machine just type
-> id --> to know who is using now
-> id + userName --> to know user id 
+ to know which user using the machine just type
+- id --> to know who is using now
+- id + userName --> to know user id 
 
-# General Commands
-> **we have general form to write command 
-> (command ,[option] ,[argument])
+# Commands
+ **we have general form to write command 
+ - (command ,[option] ,[argument])
+ 
 > like cp -r file1 file2
-> .......
-> [assistanat commands]
-> Ctrl + a --> Move to the first char in command
-> Ctrl + k --> Remove the chars form cursor to the end
-> Ctrl + u --> ..................................................... the first
-> Ctrl + d --> log out from the session | logout | exit  
-> clear --> clear the screen | Ctrl + l | reset from native tty
-> Shift + Page Up --> move to page up
-> Shift + Page Down --> move to page down 
-> Ctrl + z --> stop the process temporary & to complete it just type bg
-> shutdown -r now --> reboot recursive now | reboot | systemctl reboot | init 6
-> shutdown -h now --> shutdown the machine | systemctl poweroff | poweroff | init 0
-> Ctrl + s --> lock screen
-> Ctrl + q --> unlock screen
-> Ctrl + c --> terminate the command 
-> ..............
+ 
+[assistanat commands]
+
+>- Ctrl + a --> Move to the first char in command
+>- Ctrl + k --> Remove the chars form cursor to the end
+>- Ctrl + u --> ..................................................... the first
+>- Ctrl + d --> log out from the session | logout | exit  
+>- clear --> clear the screen | Ctrl + l | reset from native tty
+>- Shift + Page Up --> move to page up
+>- Shift + Page Down --> move to page down 
+>- Ctrl + z --> stop the process temporary & to complete it just type bg
+>- shutdown -r now --> reboot recursive now | reboot | systemctl reboot | init 6
+>- shutdown -h now --> shutdown the machine | systemctl poweroff | poweroff | init 0
+>- Ctrl + s --> lock screen
+>- Ctrl + q --> unlock screen
+>- Ctrl + c --> terminate the command  
+
+**General Commands
+
 > date --> for time
 > cal --> for calender | cal mon year | cal year 
 > su - --> to change from root to user
