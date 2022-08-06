@@ -25,12 +25,12 @@ Note
 - id + userName --> to know user id 
 
 # Commands
- **we have general form to write command 
+ **we have general form to write command**
  - (command ,[option] ,[argument])
  
 > like cp -r file1 file2
  
-[assistanat commands]
+ **assistanat commands**
 
 >- Ctrl + a --> Move to the first char in command
 >- Ctrl + k --> Remove the chars form cursor to the end
@@ -48,64 +48,62 @@ Note
 
 **General Commands
 
-> date --> for time
-> cal --> for calender | cal mon year | cal year 
-> su - --> to change from root to user
-> su - | su - root --> to change from user to root and require password
-> eject --> CD room out
-> eject -t --> CD room in
-> ls --> list files with colors | -a all files with hidden | -r reversed |-l in details | -R recursivly
-> cat --> to show content in file
-> pwd (print working directory) -->to know where you are
-> dir --> list files with out colors
-> cd --> change dir & cd - --> move to last dir
-> cd ~ = cd but has large usage like cd ~user 
-> touch --> create one or more textFile & if we create 2 files has same name we just change the recent access time to the file
-> we have two methods to write path (absolute path & parent path ) parent is (. & ..)
-> mkdir --> make new dir | mkdir /path
-> tree --> list files & dirs as a tree representation
-> cp --> copy file or dir to path | change name of the file 
-> cp -r --> recursive copy used for non empty dirs 
-> mv --> move file or dir to path with it's source file | change file name
-> rm --> remove file
-> rm dir --> remove empty dir 
-> rm -r dir --> remove dir file by file
-> rm -rf dir --> remove full dir  
-> ......wh commands
-> w --> general info about system login 
-> who --> shorted info about users & login
-> who am i --> which user using the system
-> whatis --> show what is the command uses
-> whereis --> where are binaries & mans of command
-> ......
-> last --> who used the machine and date of usage (all times)
-> lastlog --> last time for each user only 
->  ls -li --> list files with inode number 
->  df --> list disk files 
->  df -h --> list disk files with human readss
->  ln --> create hard link to a file
->  ln -s --> create soft link to a file
->  lsblk --> list my disks
->  fdisk --> to create or format file system
->  partprobe --> scan partition table for all disks 
->  mkfs --> make file system to a partition
->  dd if=/dev/zero of=/dev/sdb count=512 --> reset the hard to raw space
->  dumpe2fs --> list all information about file system
->  dd if=/dev/sdb1 of=/sdb1-backup --> to take a backup from disk
->  mount -t type dev mount point (-t type replaced by an automatic detection ) --> mount 
->  umount dev | mount point --> unmount a device
->  blkid --> list device and its UUID 
-> .......... we can mount dev by it's UUID
-> e2lable --> change a dev name to a human readable name "LABEL"
-> .......... we can mount dev by it's LABEL so we have 3 ways to mount a dev 
-> etc/fstab --> save configration on it 
-> mount -a --> reread to  /etc/fstab and mount by kernel
-> ... to make an auto mount we save our configrations into /etc/fstab 
-> dev mountPoint Type Options dumbOrder FileSysCheck Order
-> .... every mount we do is saved on /etc/mtab so we can save our configrations to /etc/fstabe by taking the last command /etc/mtab copy and paste it in /etc/fstab
-> .... to delete a partition we have saved it's configration files --> we must remove it's configrations and unmounted it to protect me from any crash or error
-> du -sh --> show the size of dir | File with human readable 
-> cfdisk --> like fdisk but with assistant interface
+>- date --> for time
+>- cal --> for calender | cal mon year | cal year 
+>- su - --> to change from root to user
+>- su - | su - root --> to change from user to root and require password
+>- eject --> CD room out
+>- eject -t --> CD room in
+>- ls --> list files with colors | -a all files with hidden | -r reversed |-l in details | -R recursivly
+>- cat --> to show content in file
+>- pwd (print working directory) -->to know where you are
+>- dir --> list files with out colors
+>- cd --> change dir & cd - --> move to last dir
+>- cd ~ = cd but has large usage like cd ~user 
+>- touch --> create one or more textFile & if we create 2 files has same name we just change the recent access time to the file
+>- we have two methods to write path (absolute path & parent path ) parent is (. & ..)
+>- mkdir --> make new dir | mkdir /path
+>- tree --> list files & dirs as a tree representation
+>- cp --> copy file or dir to path | change name of the file 
+>- cp -r --> recursive copy used for non empty dirs 
+>- mv --> move file or dir to path with it's source file | change file name
+>- rm --> remove file
+>- rm dir --> remove empty dir 
+>- rm -r dir --> remove dir file by file
+>- rm -rf dir --> remove full dir  
+>-  last --> who used the machine and date of usage (all times)
+>- lastlog --> last time for each user only 
+>-  ls -li --> list files with inode number 
+>-  df --> list disk files 
+>-  df -h --> list disk files with human readss
+>-  ln --> create hard link to a file
+>-  ln -s --> create soft link to a file
+>-  lsblk --> list my disks
+>-  fdisk --> to create or format file system
+>-  partprobe --> scan partition table for all disks 
+>-  mkfs --> make file system to a partition
+>-  dd if=/dev/zero of=/dev/sdb count=512 --> reset the hard to raw space
+>-  dumpe2fs --> list all information about file system
+>-  dd if=/dev/sdb1 of=/sdb1-backup --> to take a backup from disk
+>-  mount -t type dev mount point (-t type replaced by an automatic detection ) --> mount 
+>- umount dev | mount point --> unmount a device
+>-  blkid --> list device and its UUID --> we can mount dev by it's UUID
+>- e2lable --> change a dev name to a human readable name "LABEL" --> we can mount dev by it's LABEL so we have 3 ways to mount a dev 
+>- etc/fstab --> save configration on it 
+>- mount -a --> reread to  /etc/fstab and mount by kernel (Note ) to make an auto mount we save our configrations into /etc/fstab 
+>- dev mountPoint Type Options dumbOrder FileSysCheck Order (Note ) --> every mount we do is saved on /etc/mtab so we can save our configrations to /etc/fstabe by taking the last command /etc/mtab copy and paste it in /etc/fstab & to delete a partition we have saved it's configration files --> we must remove it's configrations and unmounted it to protect me from any crash or error
+>- du -sh --> show the size of dir | File with human readable 
+>- cfdisk --> like fdisk but with assistant interface
+
+**WH Commands**
+
+>- w --> general info about system login 
+>- who --> shorted info about users & login
+>- who am i --> which user using the system
+>- whatis --> show what is the command uses
+>- whereis --> where are binaries & mans of command
+
+
 
 # File system 
 > This is a comparison between windows file system and linux fs
@@ -116,27 +114,27 @@ Note
 > Linux file system 
 
 ![[Pasted image 20220729025953.png]]
-> / --> root file system 
-> root --> The home directory of the all powerful root user
-> home --> The user’s home directory 
-> etc --> Generally contains the Linux configuration files—files that control when and how programs start up
-> mnt --> Where other filesystems are attached or mounted to the filesystem
-> media --> Where CDs and USB devices are usually attached or mounted to the filesystem
-> bin --> Where application binaries (the equivalent of executables in Microsoft Windows)
-> sbin --> application binaries but for super users only
-> lib --> Where you’ll find libraries
-> tmp --> temporary files like cash and it removed by reboot or after exact time
-> usr --> shared files between all users 
-> proc --> all information that kernal knows about your system (hardware & sw) read only
-> opt --> empty dir used for install & uninstall packages for some application like oracle
-> srv --> like opt
-> boot --> for kernel and boot loader
-> lib --> to access file system 
+>- / --> root file system 
+>- root --> The home directory of the all powerful root user
+>- home --> The user’s home directory 
+>- etc --> Generally contains the Linux configuration files—files that control when and how programs start up
+>- mnt --> Where other filesystems are attached or mounted to the filesystem
+>- media --> Where CDs and USB devices are usually attached or mounted to the filesystem
+>- bin --> Where application binaries (the equivalent of executables in Microsoft Windows)
+>- sbin --> application binaries but for super users only
+>- lib --> Where you’ll find libraries
+>- tmp --> temporary files like cash and it removed by reboot or after exact time
+>- usr --> shared files between all users 
+>- proc --> all information that kernal knows about your system (hardware & sw) read only
+>- opt --> empty dir used for install & uninstall packages for some application like oracle
+>- srv --> like opt
+>- boot --> for kernel and boot loader
+>- lib --> to access file system 
 
 
 # Users & Groups
-> when we create new user there is a new group created by the same name
-> every user has one primary groug and can join any secondary group
+ - when we create new user there is a new group created by the same name
+ - every user has one primary groug and can join any secondary group
 
 to create new user 
 >useradd user 
@@ -147,10 +145,10 @@ the user still passive till we create password to it
 to create new group 
 > groupadd groupname
 
-The informations about any user are saved in /etc/passwd
-The informations about any user password are saved in /etc/shadow
-The informations about any group are saved in /etc/group
-The informations about any group password are saved in /etc/gshadow
+- The informations about any user are saved in /etc/passwd
+- The informations about any user password are saved in /etc/shadow
+- The informations about any group are saved in /etc/group
+- The informations about any group password are saved in /etc/gshadow
 
 To change the prinmary group of user 
 > useradd -g groupname username
