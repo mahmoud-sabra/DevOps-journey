@@ -1,34 +1,45 @@
-# Golden rules
-> Every thing is a file 
+# Linux 
+to know what is linux just press on this link[ (https://www.linux.com/what-is-linux/) ]
 
-> Man is your best friend
-# CLI  
+## Control the system  
 > We can control system by two methods (GUI & CLI ) CLI is most common on servers and most times called (tty) tele type terminal when we have physical access to the machine 
 
-( 1 ) To move From GUI to tty juse type 
->Alt + Ctrl +Fn --> n is the number of tty from 1 to 9 
+![[Pasted image 20220808114105.png]]
 
-....and from tty to another just type 
+- To move From GUI to tty juse type 
+>Alt + Ctrl +Fn --> n is the number of tty from 1 to 9 
+- and from tty to another just type 
 > Alt +Fn | chvt n 
 
-Note
->we have more than tty to do more operation at same time & to know what tty i am in just type tty 
+Note :
+```
+we have more than tty to do more operation at same time & to know what tty i am in just type tty 
+```
 
-# Users
+## Golden rules
+> Every thing is a file in linux
+
+> Man is your best friend
+
+
+## Users
  We have two general users  
- - Root that have ID = 0 >>>> has all permission 
+ - Root that have ID = 0 ---> has all permissions 
  - Normal user ID >= 1000 
-> from 0 to 1000 reserverd to system services
+ 
+```
+ from 0 to 1000 reserverd to system services
+```
 
  to know which user using the machine just type
 - id --> to know who is using now
 - id + userName --> to know user id 
 
-# Commands
+## Commands
  **we have general form to write command**
- - (command ,[option] ,[argument])
- 
-> like cp -r file1 file2
+ - (command ,voption ,argument )
+ ex :
+>cp -r file1 file2
  
  **assistanat commands**
 
@@ -46,7 +57,9 @@ Note
 >- Ctrl + q --> unlock screen
 >- Ctrl + c --> terminate the command  
 
-**General Commands
+____________________________________________________________________________
+
+**General Commands**
 
 >- date --> for time
 >- cal --> for calender | cal mon year | cal year 
@@ -95,6 +108,7 @@ Note
 >- du -sh --> show the size of dir | File with human readable 
 >- cfdisk --> like fdisk but with assistant interface
 
+_____________________________________________________________________________
 **WH Commands**
 
 >- w --> general info about system login 
@@ -103,9 +117,9 @@ Note
 >- whatis --> show what is the command uses
 >- whereis --> where are binaries & mans of command
 
+____________________________________________________________________________
 
-
-# File system 
+## File system 
 > This is a comparison between windows file system and linux fs
 
 ![[Pasted image 20220729030038.png]]
@@ -134,7 +148,7 @@ Note
 
 # Users & Groups
  - when we create new user there is a new group created by the same name
- - every user has one primary groug and can join any secondary group
+ - every user has one primary group and can join any secondary group
 
 to create new user 
 >useradd user 
@@ -150,9 +164,8 @@ to create new group
 - The informations about any group are saved in /etc/group
 - The informations about any group password are saved in /etc/gshadow
 
-To change the prinmary group of user 
+To change the primary group of user 
 > useradd -g groupname username
-
 
 To add user to more than group 
 >usermod -G groupname username
@@ -163,20 +176,26 @@ To add user to more than secondary group
 To delete any user 
 >userdel -r 
 
-# Basic Permissions 
-## sympolic method
-user                  group                        other
-rwx                    rwx                           rwx
-3 bit                  3 bit                          3 bit
+## Basic Permissions 
+### sympolic method
+user------------   group -------------- other
+rwx ------------   rwx     -------------- rwx
+3 bit------------   3 bit   --------------  bit
 
+
+```
 the probability of  permissions is [read, write, excute ] 
 we consider that we want 9 bit only to represent the permissions but acutally we want 10 bit 1 for the type of the file  (it will be exist at the first of permissions like drwx) + 9 of permissions 
-## Types of the files
-1-  normal file --> _
-2- dir --> d
-3- block dev --> b like disk 
-4- char dev --> c like keyboard & tty
-5- link file --> l like shortcut in windows 
+```
+
+### Types of the files
+-  normal file --> _
+- dir --> d
+- block dev --> b like disk 
+- char dev --> c like keyboard & tty
+- link file --> l like shortcut in windows 
+
+![[Pasted image 20220808120316.png]]
 
 To add | remove a permession to ([u , g ,o])
 >chmod u | g | o +(-)r | w | x file name
@@ -188,13 +207,15 @@ To change the persmssion to a dir and it's content
 > chmod -R +x dirName
 
 what is the meaning of rwx to (File, Dir)
-r                               w                      x
+r ---------------------- w-------------------- x
 
-File                         File                   File
-[ls]                         [edit|delete]     [run]
+File------------------- File ------------------ File
 
-Dir                         Dir                     Dir
-[ls]                        [add|delete]      [cd | ls -l]
+[ls]-------------- [edit|delete] -------------- [run]
+
+Dir-------------------- Dir ------------------- Dir
+
+[ls] --------------- [add|delete]------------ [cd | ls -l]
 
 
 To change the ownership of Dir 
@@ -278,4 +299,99 @@ To list the content of compressed dir by without extract it
 > tar tvfj  fileName --> if it's compress made by bzip2
  
  
- 
+# Process mangement
+- to list the current running  process from the current terminal
+>ps 
+- to list the current running process from all terminal
+>ps a
+- to list the all running process from all terminal 
+>ps aux
+- to stop any process
+> kill process ID
+- to list all signals can be send
+>kill -l
+- to list PID & PPID 
+>ps -ef 
+- to list processes as a tree
+>pstree
+- to search process ID by it's name
+>pgrep processName
+- to kill by using process name 
+>pkill process name
+- to run an application from terminal as a background process
+>applicationName &
+- to list applications running on background 
+> jops
+- to return the process to the shell | full ground 
+>fg %ProcessNumber 
+- to pause any process 
+>Ctrl + Z
+- to return the process to the background first pause it 
+>bg %ProcessNumber
+- to show the real time to a process 
+>top --> we can kill process from it by writing k and enter it's parameters
+- Nice value determine the periority of the process from 19 (lowest) to -20 (highest)
+  it's Normal value is 0 & to assign the periority
+>nice -n periorityValue processName
+- to change the periority of a working process 
+>renice -n periorityValue processID
+  
+  
+# Searching and locating files&dirs
+- we have to methods to get a location of a file one using locate command and other using find command the difference between them is that locate searching depends on database & find search in runtime
+> locate + fileName
+
+>find - option ..... --> these points depend on option 
+
+- we can search on specific dir like 
+>find /etc/ -iname network --> i is a short of insensitive 
+- if we wanna save the results of any search on a specific dir 
+>find /etc/ -iname network -exec cp {} dirName/ \; --> cp -r for dir
+- to search content of a file 
+>grep -options word fileName
+>ex --> gerp -v text File1 --> v is short of inverse
+- to list a one column from collections of columns 
+>cut -f columnNumber -d : filePath --> we can list more than column ex 1,3 or 1-4
+- to arrange the result by a numeric arrange 
+> command | sort -n
+- to list the result only one time
+> command | sort | uniq
+
+# Vim commands
+## we have three modes when we use vim 
+- 1- Command mode (read only)
+- 2- insert mode 
+- 3- exec mode 
+to move from 1 to 2 just type " i " or press insert key 
+to move from 2 to 1 just press Esc key
+to move from 1 to 3 just type " : " & there are an options needed 
+- 1- :w --> write the edition
+- 2- :q --> quit 
+- 3- :wq --> write and quit 
+- 4- q! --> quit with out saving
+
+to search about word on command mode 
+ >/Keyword 
+
+we use n to nextStep and N for previousStep
+- to copy the line use yy and to paste it use p
+- to copy n lines use nyy . . .
+- to cut n lines use ndd .  .  .
+
+to move to any line we should be on exec mode and just type  :LineNumber
+to know what is the number of my working line :set number
+to undo a command just type " u " 
+to delete word " dw " & letter or char " dl "
+to delete lines from 7:10 use exec mode and :7,10d
+to delete from cursor to end of the file : . , $d
+to delete from start to end :1,$d
+to redo command just type . (dot)
+to move to first Char " gg " & last char " G "
+to replace word by another "%s/word/another" & for all words /another/g
+to read any file and paste it at cursor place :r fileName
+to delete from cursor to end of line d$
+to delete from cursor to first of line d0
+to exec shell command from vim :! command
+to exec shell command from vim and put it at cursor place :.! command
+
+
