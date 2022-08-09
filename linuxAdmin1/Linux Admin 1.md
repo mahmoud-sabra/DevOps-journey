@@ -4,7 +4,8 @@ to know what is linux just press on this link --> https://www.linux.com/what-is-
 ## Control the system  
 > We can control system by two methods (GUI & CLI ) CLI is most common on servers and most times called (tty) tele type terminal when we have physical access to the machine 
 
-![[Pasted image 20220808114105.png]]
+![Pasted image 20220808114105](https://user-images.githubusercontent.com/52472369/183637538-0cde8bce-2df3-40f0-a606-a3ead2eb6836.png)
+
 
 - To move From GUI to tty juse type 
 ```
@@ -129,12 +130,15 @@ ____________________________________________________________________________
 ## File system 
 > This is a comparison between windows file system and linux fs
 
-![[Pasted image 20220729030038.png]]
+![Pasted image 20220729030038](https://user-images.githubusercontent.com/52472369/183637673-3cbb751d-c370-48e4-a92a-565db9ba4763.png)
+
 
 
 > Linux file system 
 
-![[Pasted image 20220729025953.png]]
+![Pasted image 20220729025953](https://user-images.githubusercontent.com/52472369/183637757-c7ed9980-aaec-4bff-9f56-9b9cf9608357.png)
+
+
 >- / --> root file system 
 >- root --> The home directory of the all powerful root user
 >- home --> The user’s home directory 
@@ -176,7 +180,9 @@ groupadd groupname
 >- The informations about any user password are saved in /etc/shadow
 >- The informations about any group are saved in /etc/group
 >- The informations about any group password are saved in /etc/gshadow
-![[Pasted image 20220808180048.png]]
+
+![Pasted image 20220808180048](https://user-images.githubusercontent.com/52472369/183637942-69237bbc-4570-4627-885c-e6934b091f0d.png)
+
 
 - To change the primary group of user 
 ```
@@ -199,13 +205,13 @@ userdel -r
 ```
 
 - for more information about users & groups --> https://devconnected.com/how-to-list-users-and-groups-on-linux/ 
-- 
+ 
 ## Basic Permissions 
 > we have two methods to work with permissions (sympolic & numeric)
-### sympolic method
-user------------   group -------------- other
-rwx ------------   rwx     -------------- rwx
-3 bit------------   3 bit   --------------  bit
+### sympolic method                                                                                                                  
+user  ------------    group    ------------- other                                                                             
+rwx   ------------    rwx      ------------- rwx                                                                                                          
+3 bit ------------   3 bit     ------------- bit                                                                                             
 
 
 
@@ -220,7 +226,8 @@ we consider that we want 9 bit only to represent the permissions but acutally we
 - char dev --> c like keyboard & tty
 - link file --> l like shortcut in windows 
 
-![[Pasted image 20220808120316.png]]
+![Pasted image 20220808120316](https://user-images.githubusercontent.com/52472369/183638459-441f5e61-0438-4a3a-ab98-f5a9a889f21f.png)
+
 
 - To add or remove a permession to [u , g ,o]
 ```
@@ -235,7 +242,7 @@ chmod ugo+x,u-r,o-w file name
 chmod -R +x dirName
 ```
 
-what is the meaning of rwx to (File, Dir)
+what is the meaning of rwx to (File, Dir)                     
 r ---------------------- w-------------------- x
 
 File------------------- File ------------------ File
@@ -249,12 +256,14 @@ Dir-------------------- Dir ------------------- Dir
 
 To change the ownership of Dir 
 > chown user:group Dir  ....................... change the user & group
+
 > chown user Dir             ....................... change the user only
+
 > chown :group               ....................... change the group only
 
 ### numeric method
- r --> 4  --------------------- w--> 2  ---------------------- x --> 1
- rwx =7 --------------------- rw=6   ----------------------- rx=5 
+ r --> 4  --------------------- w--> 2  ---------------------- x --> 1                                                                     
+ rwx =7 --------------------- rw=6   ----------------------- rx=5                                                         
  
  ex :
  ```
@@ -265,14 +274,15 @@ chmod 755 file1 = chmod u+rwx,go=rx file1
  we can use setting permession [=] to short the command --> (go=rx) =(g+rx,o+rx)
 - this is a comparison between symploic & numeric 
 
-![[Pasted image 20220808175644.png]]
+![Pasted image 20220808175644](https://user-images.githubusercontent.com/52472369/183638672-b06d6fc3-d010-40f9-bb73-153fdda74bb4.png)
+
 
 ## Redirection
  >the sequence of any process is 
-(0) input  -------------> processing----------->  (1) output 
------------------------->   (2) Error 
+(0) input  -------------> processing----------->  (1) output                                                                                               
+                       ------------------------>   (2) Error 
 
-![[Pasted image 20220808181434.png]]
+![Pasted image 20220808181434](https://user-images.githubusercontent.com/52472369/183638160-a74b6c71-7a66-4f8d-8e6b-c86b24a99af9.png)
 
 - the normal input method is from keyboard 
 - the normal output method is the screen 
@@ -280,7 +290,13 @@ chmod 755 file1 = chmod u+rwx,go=rx file1
 
 - we represent input by < | 0< & output > | 1> & error 2>
 - if we use one sympol > or < we overwrite the previous saves so to compine between more than one we use two symopol << for input or >> for output
-![[Pasted image 20220808180635.png]]- using pipe | redirection  ![[Pasted image 20220808180726.png]]
+
+![Pasted image 20220808180635](https://user-images.githubusercontent.com/52472369/183639254-c6390118-be97-4e7a-aad6-7dfcae69c475.png)
+
+ using pipe | redirection  
+
+![Pasted image 20220808180726](https://user-images.githubusercontent.com/52472369/183639409-4da0cd61-c03d-4d22-9b04-01f2e481b5d3.png)
+
  - | used for pass the output of command as an input to another command like 
   ```
 ls -lR / | less 
@@ -295,7 +311,9 @@ ls -lR / | less
 ```
 command | tee fileName
  ```
- ![[Pasted image 20220808181037.png]]
+ ![Pasted image 20220808181037](https://user-images.githubusercontent.com/52472369/183639509-05cc95da-0da8-4280-8573-c2d0c2eb5fa4.png)
+
+ 
  - but only tee will overwrite the file so we use
  ```
  command | tee -a fileName
@@ -344,19 +362,25 @@ command | tee fileName
 
 >Basically inodes store everything about the file, except the filename and the file itself!
 
+![Pasted image 20220809125840](https://user-images.githubusercontent.com/52472369/183639652-78fad07f-dde8-400f-933f-c53d6114b11c.png)
 
-![[Pasted image 20220809125840.png]]
 
 **When are inodes created?**
 
 >When a filesystem is created, space for inodes is allocated as well. There are algorithms that take place to determine how much inode space you need depending on the volume of the disk and more.
-![[Pasted image 20220809125925.png]]
+
+![Pasted image 20220809125925](https://user-images.githubusercontent.com/52472369/183639752-03a2937f-867a-4742-b96c-ad85ed279d81.png)
+
 
 **For  MBR File System**
 
-![[Pasted image 20220809125549.png]]
+![Pasted image 20220809125549](https://user-images.githubusercontent.com/52472369/183639822-a17f0e6d-ad37-4ca6-84c8-582b975e1eda.png)
+
 when we create MBR File system there is a Partion table created also 
-![[Pasted image 20220809125635.png]] 
+
+![Pasted image 20220809125635](https://user-images.githubusercontent.com/52472369/183639918-56f11500-26c3-4dbe-9062-25bb52c3dcc2.png)
+
+
 ## Compressing & Archiving
   **To Files & Directories**
   - _First ---> Compressing a file_
@@ -559,7 +583,10 @@ command | sort | uniq
 to move from 1 to 2 just type " i " or press insert key 
 to move from 2 to 1 just press Esc key
 to move from 1 to 3 just type " : " & there are an options needed 
-![[Pasted image 20220809131916.png]]
+
+![Pasted image 20220809131916](https://user-images.githubusercontent.com/52472369/183640047-18444611-89e6-480a-b383-27fea4617930.png)
+
+
 - 1- :w --> write the edition
 - 2- :q --> quit 
 - 3- :wq --> write and quit 
