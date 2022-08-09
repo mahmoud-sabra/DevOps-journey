@@ -1,5 +1,5 @@
 # Linux 
-to know what is linux just press on this link[ (https://www.linux.com/what-is-linux/) ]
+to know what is linux just press on this link --> https://www.linux.com/what-is-linux/
 
 ## Control the system  
 > We can control system by two methods (GUI & CLI ) CLI is most common on servers and most times called (tty) tele type terminal when we have physical access to the machine 
@@ -7,19 +7,23 @@ to know what is linux just press on this link[ (https://www.linux.com/what-is-li
 ![[Pasted image 20220808114105.png]]
 
 - To move From GUI to tty juse type 
->Alt + Ctrl +Fn --> n is the number of tty from 1 to 9 
+```
+Alt + Ctrl +Fn --> n is the number of tty from 1 to 9 
+```
 - and from tty to another just type 
-> Alt +Fn | chvt n 
+```
+ Alt +Fn | chvt n 
+```
 
 Note :
-```
-we have more than tty to do more operation at same time & to know what tty i am in just type tty 
-```
+>we have more than tty to do more operation at same time & to know what tty i am in just type tty 
+
 
 ## Golden rules
+
 > Every thing is a file in linux
 
-> Man is your best friend
+ >Man is your best friend
 
 
 ## Users
@@ -27,9 +31,9 @@ we have more than tty to do more operation at same time & to know what tty i am 
  - Root that have ID = 0 ---> has all permissions 
  - Normal user ID >= 1000 
  
-```
- from 0 to 1000 reserverd to system services
-```
+
+  >from 0 to 1000 reserverd to system services
+
 
  to know which user using the machine just type
 - id --> to know who is using now
@@ -37,10 +41,13 @@ we have more than tty to do more operation at same time & to know what tty i am 
 
 ## Commands
  **we have general form to write command**
- - (command ,voption ,argument )
- ex :
->cp -r file1 file2
+ > (command ,option ,argument )
  
+ ex :
+```
+cp -r file1 file2
+```
+
  **assistanat commands**
 
 >- Ctrl + a --> Move to the first char in command
@@ -146,47 +153,65 @@ ____________________________________________________________________________
 >- lib --> to access file system 
 
 
-# Users & Groups
- - when we create new user there is a new group created by the same name
+## Users & Groups
+ - when we create new user there is a new group created has the same name
  - every user has one primary group and can join any secondary group
 
-to create new user 
->useradd user 
+- to create new user 
+``` 
+useradd user 
+```
 
-the user still passive till we create password to it
->passwd user 
+- the user still passive till we create password to it
+```
+passwd user 
+```
 
-to create new group 
-> groupadd groupname
+- to create new group 
+```
+groupadd groupname
+```
 
-- The informations about any user are saved in /etc/passwd
-- The informations about any user password are saved in /etc/shadow
-- The informations about any group are saved in /etc/group
-- The informations about any group password are saved in /etc/gshadow
+>- The informations about any user are saved in /etc/passwd
+>- The informations about any user password are saved in /etc/shadow
+>- The informations about any group are saved in /etc/group
+>- The informations about any group password are saved in /etc/gshadow
+![[Pasted image 20220808180048.png]]
 
-To change the primary group of user 
-> useradd -g groupname username
+- To change the primary group of user 
+```
+ useradd -g groupname username
+```
 
-To add user to more than group 
->usermod -G groupname username
+- To add user to more than group 
+```
+usermod -G groupname username
+```
 
-To add user to more than secondary group 
->usermod -a -G groupname username
+- To add user to more than secondary group 
+```
+usermod -a -G groupname username
+```
 
-To delete any user 
->userdel -r 
+- To delete any user 
+```
+userdel -r 
+```
 
+- for more information about users & groups --> https://devconnected.com/how-to-list-users-and-groups-on-linux/ 
+- 
 ## Basic Permissions 
+> we have two methods to work with permissions (sympolic & numeric)
 ### sympolic method
 user------------   group -------------- other
 rwx ------------   rwx     -------------- rwx
 3 bit------------   3 bit   --------------  bit
 
 
-```
-the probability of  permissions is [read, write, excute ] 
+
+>the probability of  permissions is [read, write, excute ] 
 we consider that we want 9 bit only to represent the permissions but acutally we want 10 bit 1 for the type of the file  (it will be exist at the first of permissions like drwx) + 9 of permissions 
-```
+
 
 ### Types of the files
 -  normal file --> _
@@ -197,14 +222,18 @@ we consider that we want 9 bit only to represent the permissions but acutally we
 
 ![[Pasted image 20220808120316.png]]
 
-To add | remove a permession to ([u , g ,o])
->chmod u | g | o +(-)r | w | x file name
-
-we can compine between commands like 
-> chmod ugo+x,u-r,o-w file name 
-
-To change the persmssion to a dir and it's content 
-> chmod -R +x dirName
+- To add or remove a permession to [u , g ,o]
+```
+chmod u | g | o +(-)r | w | x file name
+```
+- we can compine between commands like 
+ ```
+chmod ugo+x,u-r,o-w file name 
+```
+- To change the persmssion to a dir and it's content 
+```
+chmod -R +x dirName
+```
 
 what is the meaning of rwx to (File, Dir)
 r ---------------------- w-------------------- x
@@ -223,175 +252,344 @@ To change the ownership of Dir
 > chown user Dir             ....................... change the user only
 > chown :group               ....................... change the group only
 
-## numeric method
- r --> 4                                     w--> 2                                      x --> 1
- rwx =7                                    rw=6                                        rx=5 
- ex --> chmod 755 file1 = chmod u+rwx,go=rx file1
- if we wanna remove the permession we write 0 like 700 or 650
+### numeric method
+ r --> 4  --------------------- w--> 2  ---------------------- x --> 1
+ rwx =7 --------------------- rw=6   ----------------------- rx=5 
+ 
+ ex :
+ ```
+chmod 755 file1 = chmod u+rwx,go=rx file1
+```
+
+ > if we wanna remove the permession we write 0 like 700 or 650
  we can use setting permession [=] to short the command --> (go=rx) =(g+rx,o+rx)
+- this is a comparison between symploic & numeric 
 
+![[Pasted image 20220808175644.png]]
 
-# Redirection
-First --> the sequence of any process is 
-(0) input  --->                [processing]            --->  (1) output 
-.................................................--->   (2) Error 
-the normal input method is from keyboard 
-the normal output method is the screen 
+## Redirection
+ >the sequence of any process is 
+(0) input  -------------> processing----------->  (1) output 
+------------------------>   (2) Error 
+
+![[Pasted image 20220808181434.png]]
+
+- the normal input method is from keyboard 
+- the normal output method is the screen 
 >redirection helps me through the automation scripts and save results & errors
 
-we represent input by < | 0< & output > | 1> & error 2>
-if we use one sympol > or < we overwrite the previous saves so to compine between more than one we use two symopol << for input or >> for output
+- we represent input by < | 0< & output > | 1> & error 2>
+- if we use one sympol > or < we overwrite the previous saves so to compine between more than one we use two symopol << for input or >> for output
+![[Pasted image 20220808180635.png]]- using pipe | redirection  ![[Pasted image 20220808180726.png]]
+ - | used for pass the output of command as an input to another command like 
+  ```
+ls -lR / | less 
+ ```
 
-we can use cat to edit file like
-> cat << word >>file1
-> 
+- we can use cat to edit file like
+```
+ cat << word >>file1 ,  word is a terminator to all words entered the file
+```
 
-word is a terminator to all words entered the file
+- to store the result of command in a file and show it in screen at same time  
+```
+command | tee fileName
+ ```
+ ![[Pasted image 20220808181037.png]]
+ - but only tee will overwrite the file so we use
+ ```
+ command | tee -a fileName
+```
 
- > | used for pass the output of command as an input to another command like 
- > ls -lR / | less 
- 
- to store the result of command in a file and show it in screen at same time 
- > command | tee fileName
- 
- but only tee will overwrite the file so we use
- > command | tee -a fileName
+
+## Inodes & Filesystem
+### Anatomy of a Disk
+
+>Hard disks can be subdivided into partitions, essentially making multiple block devices. Recall such examples as, /dev/sda1 and /dev/sda2, /dev/sda is the whole disk, but /dev/sda1 is the first partition on that disk. Partitions are extremely useful for separating data and if you need a certain filesystem, you can easily create a partition instead of making the entire disk one filesystem type.
+
+**Partition Table**
+
+>Every disk will have a partition table, this table tells the system how the disk is partitioned. This table tells you where partitions begin and end, which partitions are bootable, what sectors of the disk are allocated to what partition, etc. There are two main partition table schemes used, Master Boot Record (MBR) and GUID Partition Table (GPT).
+
+**Partition**
+
+>Disks are comprised of partitions that help us organize our data. You can have multiple partitions on a disk and they can't overlap each other. If there is space that is not allocated to a partition, then it is known as free space. The types of partitions depend on your partition table.
+
+### Filesystem Types
+
+>There are many different filesystem implementations available. Some are faster than others, some support larger capacity storage and others only work on smaller capacity storage. Different filesystems have different ways of organizing their data and we'll go into detail about what types of filesystems there are. Since there are so many different implementations available, applications need a way to deal with the different operations. So there is something called the Virtual File System (VFS) abstraction layer. It is a layer between applications and the different filesystem types, so no matter what filesystem you have, your applications will be able to work with it.
+>You can have many filesystem on your disks, depending on how they are partitioned.
+
+**Common Desktop Filesystem Types**
+
+>-   ext4 - This is the most current version of the native Linux filesystems. It is compatible with the older ext2 and ext3 versions. It supports disk volumes up to 1 exabyte and file sizes up to 16 terabytes and much more. It is the standard choice for Linux filesystems.
+>-   Btrfs - "Better or Butter FS" it is a new filesystem for Linux that comes with snapshots, incremental backups, performance increase and much more. It is widely available, but not quite stable and compatible yet.
+>-   XFS - High performance journaling file system, great for a system with large files such as a media server.
+>-   NTFS and FAT - Windows filesystems
+>-   HFS+ - Macintosh filesystem
+
+**What is an inode?**
+
+>An inode (index node) is an entry in this table and there is one for every file. It describes everything about the file, such as:
+
+-   File type - regular file, directory, character device, etc
+-   Owner
+-   Group
+-   Access permissions
+-   Timestamps - mtime (time of last file modification), ctime (time of last attribute change), atime (time of last access)
+-   Number of hardlinks to the file
+-   Size of the file
+-   Number of blocks allocated to the file
+-   Pointers to the data blocks of the file - most important!
+
+>Basically inodes store everything about the file, except the filename and the file itself!
 
 
-# Inodes & Filesystem
+![[Pasted image 20220809125840.png]]
 
-# Compressing & Archiving
-  To Files & Directories
-  First ---> Compressing a file
-  The most famous two types of compressing a file are
-  gzip       &          bzip2
+**When are inodes created?**
+
+>When a filesystem is created, space for inodes is allocated as well. There are algorithms that take place to determine how much inode space you need depending on the volume of the disk and more.
+![[Pasted image 20220809125925.png]]
+
+**For  MBR File System**
+
+![[Pasted image 20220809125549.png]]
+when we create MBR File system there is a Partion table created also 
+![[Pasted image 20220809125635.png]] 
+## Compressing & Archiving
+  **To Files & Directories**
+  - _First ---> Compressing a file_
   
-  fast         ,       higher compression ratio
-  How can i compress a file 
-  >  gzip    fileName
-  >  bzip2  fileName
+  >The most famous two types of compressing a file are [ gzip & bzip2] gzip is fast & bzip2  has higher compression ratio
   
-  & to decompress it 
-  >gunzip    fileName
-  >bunzip2  fileName
+- How can i compress a file 
+```
+gzip    fileName
+```
+
+```
+bzip2  fileName
+ ```
+- to decompress it 
   
-  time --> show the time that command took to complete it's process
+```
+gunzip    fileName
+  ```
 
-Archive --> collect some files and dirs into one file
- to archive any dir 
- > tar cf fileName dirWanted
- > we can use cvf to show files archiving during the process
- 
- to extract archive file 
- > tar xf fileName 
- > we can use xvf to show files extracting during the process
- 
- How to compress & archive dir at same time using gzip 
- >tar cvfz fileName dir --> compress & archive --> .tar.gz
- >tar xvfz fileName      --> decompress & exract --> .tar.gz
+```
+bunzip2  fileName
+```
 
-How to compress & archive dir at same time using bzip2 
- >tar cvfj fileName dir --> compress & archive --> .tar.bz2
- >tar xvfj fileName      --> decompress & exract --> .tar.bz2
+> time --> show the time that command took to complete it's process
 
-To list the content of compressed dir by without extract it 
-> tar tvfz fileName --> if it's compress made by gzip
-> tar tvfj  fileName --> if it's compress made by bzip2
+**Archive --> collect some files and dirs into one file
+ to archive any dir**
+ ```
+ tar cf fileName dirWanted , we can use cvf to show files archiving during the process
+ ```
+
+- to extract archive file 
+ ```
+ tar xf fileName ,we can use xvf to show files extracting during the process
+ ```
+
+- How to compress & archive dir at same time using gzip 
+ ```
+tar cvfz fileName dir --> compress & archive --> .tar.gz
+ ```
+
+```
+ tar xvfz fileName      --> decompress & exract --> .tar.gz
+```
+
+- How to compress & archive dir at same time using bzip2 
+ ```
+tar cvfj fileName dir --> compress & archive --> .tar.bz2
+ ```
+
+```
+tar xvfj fileName      --> decompress & exract --> .tar.bz2
+```
+
+- To list the content of compressed dir by without extract it 
+```
+tar tvfz fileName --> if it's compress made by gzip
+```
+
+```
+tar tvfj  fileName --> if it's compress made by bzip2
+```
  
  
 # Process mangement
 - to list the current running  process from the current terminal
->ps 
+```
+ps 
+```
+
 - to list the current running process from all terminal
->ps a
+```
+ps a
+```
+
 - to list the all running process from all terminal 
->ps aux
-- to stop any process
-> kill process ID
+```
+ps aux
+```
+-
+to stop any process
+ ```
+kill process ID
+```
+
 - to list all signals can be send
->kill -l
+```
+kill -l
+```
+
 - to list PID & PPID 
->ps -ef 
+```
+ps -ef 
+```
+
 - to list processes as a tree
->pstree
+```
+pstree
+```
+
 - to search process ID by it's name
->pgrep processName
+```
+pgrep processName
+```
+
 - to kill by using process name 
->pkill process name
+```
+pkill process name
+```
+
 - to run an application from terminal as a background process
->applicationName &
+```
+applicationName &
+```
+
 - to list applications running on background 
-> jops
+```
+jops
+```
+`
 - to return the process to the shell | full ground 
->fg %ProcessNumber 
+```
+fg %ProcessNumber 
+```
+
 - to pause any process 
->Ctrl + Z
+```
+Ctrl + Z
+```
+
 - to return the process to the background first pause it 
->bg %ProcessNumber
+```
+bg %ProcessNumber
+```
+
 - to show the real time to a process 
->top --> we can kill process from it by writing k and enter it's parameters
+```
+top --> we can kill process from it by writing k and enter it's parameters
+```
+
 - Nice value determine the periority of the process from 19 (lowest) to -20 (highest)
   it's Normal value is 0 & to assign the periority
->nice -n periorityValue processName
-- to change the periority of a working process 
->renice -n periorityValue processID
-  
-  
-# Searching and locating files&dirs
-- we have to methods to get a location of a file one using locate command and other using find command the difference between them is that locate searching depends on database & find search in runtime
-> locate + fileName
+```
+nice -n periorityValue processName
+```
 
->find - option ..... --> these points depend on option 
+- to change the periority of a working process 
+```
+renice -n periorityValue processID
+```
+  
+## Searching and locating files&dirs
+- we have two methods to get a location of a file one using locate command and other using find command the difference between them is that locate searching depends on database & find search in runtime
+```
+locate + fileName
+```
+
+```
+find - option ..... --> these points depend on option 
+```
 
 - we can search on specific dir like 
->find /etc/ -iname network --> i is a short of insensitive 
-- if we wanna save the results of any search on a specific dir 
->find /etc/ -iname network -exec cp {} dirName/ \; --> cp -r for dir
-- to search content of a file 
->grep -options word fileName
->ex --> gerp -v text File1 --> v is short of inverse
-- to list a one column from collections of columns 
->cut -f columnNumber -d : filePath --> we can list more than column ex 1,3 or 1-4
-- to arrange the result by a numeric arrange 
-> command | sort -n
-- to list the result only one time
-> command | sort | uniq
+```
+find /etc/ -iname network --> i is a short of insensitive 
+```
 
-# Vim commands
-## we have three modes when we use vim 
+- if we wanna save the results of any search on a specific dir 
+```
+find /etc/ -iname network -exec cp {} dirName/ \; --> cp -r for dir
+```
+
+ to search content of a file 
+```
+grep -options word fileName
+```
+
+> ex --> gerp -v text File1 --> v is short of inverse
+
+- to list a one column from collections of columns 
+```
+cut -f columnNumber -d : filePath --> we can list more than column ex 1,3 or 1-4
+```
+
+- to arrange the result by a numeric arrange 
+```
+command | sort -n
+```
+
+- to list the result only one time
+```
+command | sort | uniq
+```
+
+## Vim commands
+### we have three modes when we use vim 
 - 1- Command mode (read only)
 - 2- insert mode 
 - 3- exec mode 
 to move from 1 to 2 just type " i " or press insert key 
 to move from 2 to 1 just press Esc key
 to move from 1 to 3 just type " : " & there are an options needed 
+![[Pasted image 20220809131916.png]]
 - 1- :w --> write the edition
 - 2- :q --> quit 
 - 3- :wq --> write and quit 
 - 4- q! --> quit with out saving
 
 to search about word on command mode 
- >/Keyword 
+ ```
+/Keyword 
+```
 
-we use n to nextStep and N for previousStep
+>we use n to nextStep and N for previousStep
+
 - to copy the line use yy and to paste it use p
 - to copy n lines use nyy . . .
 - to cut n lines use ndd .  .  .
 
-to move to any line we should be on exec mode and just type  :LineNumber
-to know what is the number of my working line :set number
-to undo a command just type " u " 
-to delete word " dw " & letter or char " dl "
-to delete lines from 7:10 use exec mode and :7,10d
-to delete from cursor to end of the file : . , $d
-to delete from start to end :1,$d
-to redo command just type . (dot)
-to move to first Char " gg " & last char " G "
-to replace word by another "%s/word/another" & for all words /another/g
-to read any file and paste it at cursor place :r fileName
-to delete from cursor to end of line d$
-to delete from cursor to first of line d0
-to exec shell command from vim :! command
-to exec shell command from vim and put it at cursor place :.! command
+- to move to any line we should be on exec mode and just type  :LineNumber
+- to know what is the number of my working line :set number
+- to undo a command just type " u " 
+- to delete word " dw " & letter or char " dl "
+- to delete lines from 7:10 use exec mode and :7,10d
+- to delete from cursor to end of the file : . , $d
+- to delete from start to end :1,$d
+- to redo command just type . (dot)
+- to move to first Char " gg " & last char " G "
+- to replace word by another "%s/word/another" & for all words /another/g
+- to read any file and paste it at cursor place :r fileName
+- to delete from cursor to end of line d$
+- to delete from cursor to first of line d0
+- to exec shell command from vim :! command
+- to exec shell command from vim and put it at cursor place :.! command
 
 
