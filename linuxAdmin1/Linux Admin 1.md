@@ -58,7 +58,7 @@ cp -r file1 file2
 >- clear --> clear the screen | Ctrl + l | reset from native tty
 >- Shift + Page Up --> move to page up
 >- Shift + Page Down --> move to page down 
->- Ctrl + z --> stop the process temporary & to complete it just type bg
+>- Ctrl + z --> stop the process temporary & to complete it just type fg
 >- shutdown -r now --> reboot recursive now | reboot | systemctl reboot | init 6
 >- shutdown -h now --> shutdown the machine | systemctl poweroff | poweroff | init 0
 >- Ctrl + s --> lock screen
