@@ -1,0 +1,7 @@
+- CodeCommit
+- CodePipeline
+- CodeDeploy
+- Codebuild
+- elasticbeanstack
+- ecr
+- eks
